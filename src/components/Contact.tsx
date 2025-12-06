@@ -2,8 +2,71 @@
 
 import styles from './Contact.module.css';
 import { motion } from 'framer-motion';
+import { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
+    const formRef = useRef<HTMLFormElement>(null);
+    const [form, setForm] = useState({
+        name: '',
+        email: '',
+        message: '',
+    });
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState<{ type: 'success' | 'error' | null, message: string }>({ type: null, message: '' });
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setForm({
+            ...form,
+            [name]: value,
+        });
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+        setStatus({ type: null, message: '' });
+
+        if (!form.name || !form.email || !form.message) {
+            setStatus({ type: 'error', message: 'Please fill in all fields.' });
+            setLoading(false);
+            return;
+        }
+
+        // Replace these with your actual EmailJS service ID, template ID, and public key
+        // It's best practice to use environment variables for these
+        const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'service_ggm7kpv';
+        const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_09tj0ka';
+        const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'z3yzvox-Xv2MQ_y1n';
+
+        emailjs.send(
+            serviceId,
+            templateId,
+            {
+                from_name: form.name,
+                to_name: "Raghavendra", // Your name
+                from_email: form.email,
+                to_email: "raghavjayateerth@gmail.com", // Your email
+                message: form.message,
+            },
+            publicKey
+        )
+            .then(() => {
+                setLoading(false);
+                setStatus({ type: 'success', message: 'Message sent successfully! I will get back to you soon.' });
+                setForm({
+                    name: '',
+                    email: '',
+                    message: '',
+                });
+            }, (error: any) => {
+                setLoading(false);
+                console.error(error);
+                setStatus({ type: 'error', message: 'Something went wrong. Please try again later.' });
+            });
+    };
+
     return (
         <section className={styles.contact} id="contact">
             <div className={styles.glowBg}></div>
@@ -38,24 +101,58 @@ export default function Contact() {
                         transition={{ delay: 0.3, duration: 0.6 }}
                     >
                         <h3 className={styles.formTitle}>Send a Message</h3>
-                        <form className={styles.form}>
+                        <form
+                            ref={formRef}
+                            onSubmit={handleSubmit}
+                            className={styles.form}
+                        >
                             <div className={styles.inputGroup}>
                                 <label htmlFor="name" className={styles.label}>Name</label>
-                                <input type="text" id="name" className={styles.input} placeholder="John Doe" />
+                                <input
+                                    type="text"
+                                    name="name"
+                                    id="name"
+                                    value={form.name}
+                                    onChange={handleChange}
+                                    className={styles.input}
+                                    placeholder="John Doe"
+                                />
                             </div>
 
                             <div className={styles.inputGroup}>
                                 <label htmlFor="email" className={styles.label}>Email</label>
-                                <input type="email" id="email" className={styles.input} placeholder="john@example.com" />
+                                <input
+                                    type="email"
+                                    name="email"
+                                    id="email"
+                                    value={form.email}
+                                    onChange={handleChange}
+                                    className={styles.input}
+                                    placeholder="john@example.com"
+                                />
                             </div>
 
                             <div className={styles.inputGroup}>
                                 <label htmlFor="message" className={styles.label}>Message</label>
-                                <textarea id="message" rows={5} className={styles.textarea} placeholder="Your message here..."></textarea>
+                                <textarea
+                                    name="message"
+                                    id="message"
+                                    value={form.message}
+                                    onChange={handleChange}
+                                    rows={5}
+                                    className={styles.textarea}
+                                    placeholder="Your message here..."
+                                ></textarea>
                             </div>
 
-                            <button type="submit" className={styles.submitBtn}>
-                                <span>Send Message</span>
+                            {status.message && (
+                                <div className={`${styles.statusMessage} ${status.type === 'error' ? styles.error : styles.success}`} style={{ marginBottom: '1rem', color: status.type === 'error' ? '#ff6b6b' : '#4ecdc4' }}>
+                                    {status.message}
+                                </div>
+                            )}
+
+                            <button type="submit" className={styles.submitBtn} disabled={loading}>
+                                <span>{loading ? 'Sending...' : 'Send Message'}</span>
                                 <div className={styles.btnGlow}></div>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                             </button>
