@@ -6,22 +6,36 @@ import Navbar from "../components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Raghavendra Portfolio | Frontend Developer",
-  description: "Portfolio of Raghavendra, a Frontend Developer with 3 years of experience specializing in React, Next.js, and modern web technologies. Crafting pixel-perfect, scalable web experiences.",
-  keywords: ["Frontend Developer", "React Developer", "Next.js Portfolio", "Web Developer India", "UI/UX Design", "JavaScript", "TypeScript", "Raghavendra"],
-  authors: [{ name: "Raghavendra" }],
-  creator: "Raghavendra",
+  title: "Isha Portfolio | Frontend & Full-Stack Developer",
+  description:
+    "Portfolio of Isha, learning and building full-stack web applications with HTML, CSS, JavaScript, and React. Contributed to projects including a skill-matching platform and the official website of ACMW Manipal, a women-led tech club. Also involved in DAQ engineering with Team Manipal Racing.",
+  keywords: [
+    "Frontend Developer",
+    "Full-Stack Developer",
+    "React Developer",
+    "Next.js Portfolio",
+    "Web Developer India",
+    "UI/UX Design",
+    "JavaScript",
+    "TypeScript",
+    "ACMW Manipal",
+    "DAQ Engineer",
+    "Isha",
+  ],
+  authors: [{ name: "Isha" }],
+  creator: "Isha",
   openGraph: {
-    title: "Raghavendra Portfolio | Frontend Developer",
-    description: "Crafting pixel-perfect, scalable web experiences with a focus on performance and design.",
-    url: "https://raghav.dev",
-    siteName: "Raghavendra Portfolio",
+    title: "Isha Portfolio | Frontend & Full-Stack Developer",
+    description:
+      "Building responsive, interactive web experiences with React, Next.js, and modern web technologies. Contributed to ACMW Manipal website and skill-matching platform projects.",
+    url: "https://isha.dev",
+    siteName: "Isha Portfolio",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Raghavendra Portfolio",
+        alt: "Isha Portfolio",
       },
     ],
     locale: "en_US",
@@ -29,9 +43,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Raghavendra Portfolio | Frontend Developer",
-    description: "Crafting pixel-perfect, scalable web experiences with a focus on performance and design.",
-    creator: "@raghavendra",
+    title: "Isha Portfolio | Frontend & Full-Stack Developer",
+    description:
+      "Building responsive, interactive web experiences with React, Next.js, and modern web technologies.",
+    creator: "@isha",
     images: ["/og-image.png"],
   },
   robots: {
@@ -40,9 +55,9 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
 };

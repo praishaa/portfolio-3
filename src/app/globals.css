@@ -1,25 +1,30 @@
 :root {
-  --bg-color: #020617;
-  /* Deep Slate/Navy */
-  --text-color: #f8fafc;
-  --text-secondary: #94a3b8;
+  --bg-color: #1f1b2f; /* Dark muted purple background */
+  --text-color: #f3f4f6; /* Light text for readability */
+  --text-secondary: #c4b5fd; /* Soft pastel purple for secondary text */
 
-  /* Deep Ocean / Teal Theme */
-  --primary-gradient: linear-gradient(135deg, #2dd4bf 0%, #0ea5e9 50%, #3b82f6 100%);
-  /* Teal to Blue */
-  --secondary-gradient: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
-  /* Cyan to Blue */
-  --glass-gradient: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  /* Dark Pastel Purple Gradient Theme */
+  --primary-gradient: linear-gradient(
+    135deg,
+    #7c3aed 0%,
+    #8b5cf6 50%,
+    #a78bfa 100%
+  );
+  --secondary-gradient: linear-gradient(135deg, #9333ea 0%, #a78bfa 100%);
+  --glass-gradient: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
 
   /* Glass Effect */
-  --glass-bg: rgba(15, 23, 42, 0.6);
-  /* Slate 900 with opacity */
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-highlight: rgba(255, 255, 255, 0.1);
+  --glass-bg: rgba(31, 27, 47, 0.6); /* Dark purple glass */
+  --glass-border: rgba(196, 181, 253, 0.2);
+  --glass-highlight: rgba(255, 255, 255, 0.08);
   --glass-blur: 20px;
   --card-radius: 24px;
 
-  --font-main: 'Inter', sans-serif;
+  --font-main: "Inter", sans-serif;
 }
 
 * {
@@ -39,9 +44,16 @@ body {
   color: var(--text-color);
   font-family: var(--font-main);
   line-height: 1.6;
-  background-image:
-    radial-gradient(circle at 15% 50%, rgba(45, 212, 191, 0.05) 0%, transparent 25%),
-    radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 25%);
+  background-image: radial-gradient(
+      circle at 15% 50%,
+      rgba(124, 58, 237, 0.05) 0%,
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 85% 30%,
+      rgba(168, 85, 247, 0.05) 0%,
+      transparent 25%
+    );
 }
 
 a {
@@ -54,8 +66,7 @@ a {
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
   border: 1px solid var(--glass-border);
-  box-shadow:
-    0 4px 30px rgba(0, 0, 0, 0.2),
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2),
     inset 0 0 0 1px var(--glass-highlight);
   border-radius: var(--card-radius);
 }
