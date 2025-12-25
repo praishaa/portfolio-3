@@ -91,19 +91,25 @@ export default function Hero() {
         >
           <h3 className={styles.cardTitle}>Tech Stack</h3>
           <div className={styles.techList}>
-            {["React", "Angular", "Next.js", "TypeScript", "Tailwind"].map(
-              (tech, index) => (
-                <motion.span
-                  key={tech}
-                  className={styles.techItem}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.6 + index * 0.1, duration: 0.3 }}
-                >
-                  {tech}
-                </motion.span>
-              )
-            )}
+            {[
+              "React",
+              "Arduino IDE",
+              "HTML",
+              "Python",
+              "Next.js",
+              "TypeScript",
+              "Tailwind",
+            ].map((tech, index) => (
+              <motion.span
+                key={tech}
+                className={styles.techItem}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.6 + index * 0.1, duration: 0.3 }}
+              >
+                {tech}
+              </motion.span>
+            ))}
           </div>
         </motion.div>
 
