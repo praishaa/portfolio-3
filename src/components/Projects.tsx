@@ -36,6 +36,16 @@ const projects: ProjectItem[] = [
     link: "",
     tech: ["HTML", "CSS", "JavaScript"],
   },
+  {
+    id: 3,
+    title: "GenSave AI",
+    category: "Finance coach",
+    image: "linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)",
+    description:
+      "A mobile finance assistant that tracks expenses, visualizes spending trends, and provides intelligent insights using a scalable cloud backend.",
+    link: "https://github.com/praishaa/finance-coach/releases/tag/v1.0.0",
+    tech: ["dart", "node.js", "mongoDB"],
+  },
 ];
 
 export default function Projects() {
